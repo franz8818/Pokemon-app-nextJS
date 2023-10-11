@@ -10,21 +10,15 @@ export const metadata = {
 const Home = () => {
   return (
 	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
+		<h1>Database</h1>
         <p>
-			<Image  src="/img/rigo-baby.png" alt="A baby Rigo" width={200}
-          height={200}
+			<Image  src="/img/pokemon.png" alt="Logo oficial " width={600}
+          height={300}
           priority />
-      <Image
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={200}
-          height={200}
-          priority
-        />
+      
         </p>
         <Button variant="success">
-			If you see this green button, bootstrap is working
+			POKÉDEX
         </Button>
 	</div>
   );

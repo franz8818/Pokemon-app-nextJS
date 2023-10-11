@@ -3,7 +3,7 @@ export const Footer = () => {
         <footer className="footer mt-auto py-3 text-center">
             <p>
                 Made with <i className="fa fa-heart text-danger" /> by{" "}
-                <a href="http://www.4geeksacademy.com" target="_blank">4Geeks Academy</a>
+                <a href="https://portfolio-vite-five.vercel.app/" target="_blank">Franz Seidel</a>
             </p>
         </footer>
     );
