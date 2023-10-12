@@ -2,14 +2,16 @@ import Image from "next/image";
 import {
   Button,
 } from "@/components/bootstrap/client-bootstrap";
+import { useEffect, useContext } from "react";
+import { Context } from "@/context/appContext";
 
-export const metadata = {
-  title: process.env.APP_NAME +" | "+process.env.APP_DESCRIPTION,
-};
-
-const Home = () => {
-  return (
-	<div className="text-center mt-5">
+const Card = () => {
+    const {store, actions} = useContext(Context)
+    useEffect(()=>{
+        
+    },[])
+    return (
+<div className="text-center mt-5">
 		<h1>Database</h1>
     <div className="card" style={{width: "18rem"}}>
   <img src="..." className="card-img-top" alt="..." />
@@ -32,4 +34,4 @@ const Home = () => {
   );
 }
 
-export default Home
+export default Card

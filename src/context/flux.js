@@ -9,7 +9,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				title: "SECOND",
 				background: "",
 			}
-		]
+		],
+		pokemons : null, 
     }
 
 	const actions = {
@@ -36,6 +37,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//reset the global store
 			setStore({ demo: demo });
 		},
+		useFetch: async (url, endpoint, method, useToken, body, format) => {
+			if (format == "json"){
+				body = JSON.stringify(body)
+				format = {"Content-Type": "application/json"}
+			}else if(format == "formData"){
+				const formData = new FormData()
+				for (const key in body) formData.append(key, body[key])
+				body = formData
+				format = undefined
+			}
+			const requestOptions = {
+				method: method,
+				headers: {
+					...(method != "GET" && format),
+					...(useToken && {"Authorization": "Bearer "+sessionStorage.getItem("authToken")}),
+					redirect: 'follow'
+				},
+				...(method != "GET" && {body: body}),
+			}
+			try {
+				const promise = await fetch(url+endpoint, requestOptions)
+				const res = await promise.json()
+				console.log(promise)
+				console.log(res)
+				return {data: res, status: promise.status};
+			} catch (error) {
+				return {error: true}
+			}
+		},
+		getAllPokemons: async ()=>{
+			const store = getStore()
+			const actions = getActions()
+			const response = await actions.useFetch(process.env.APP_API_URL,"/pokemon","GET",false)
+			console.log(response) 
+		}
     }
 
 	// Returns context
