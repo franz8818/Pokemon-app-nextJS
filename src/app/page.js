@@ -9,26 +9,20 @@ export const metadata = {
 
 const Home = () => {
   return (
-	<div className="text-center mt-5">
-		<h1>Database</h1>
-    <div className="card" style={{width: "18rem"}}>
-  <img src="..." className="card-img-top" alt="..." />
+    <div className="container">
+	<div className="text-center">
+		<img src="/pokedex.svg" className="card-img-top" alt="..." />
+    <div className="card">
+    <Image  src="/img/squirtle.png" alt="Logo oficial " width={300}
+          height={300}
+          priority />
   <div className="card-body">
     <h4 className="card-title">Squirtle</h4>
     <h6 className="card-text">weight:</h6>
-    <a href="#" className="btn btn-primary">Go somewhere</a>
+  </div>
+  </div>
   </div>
 </div>
-        <p>
-			<Image  src="/img/squirtle.png" alt="Logo oficial " width={300}
-          height={300}
-          priority />
-      
-        </p>
-        <Button variant="success">
-			POKÉDEX
-        </Button>
-	</div>
   );
 }
 
