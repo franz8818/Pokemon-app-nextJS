@@ -9,7 +9,10 @@
 
 
 /* ------------------------- PAGE.JS -----------------------------*/
-.container {
+/* .container {
     background: #09f;
-}
+} */
 
+.card {
+  border-style: solid;
+}
