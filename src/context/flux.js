@@ -1,3 +1,4 @@
+const API_URL = "https://pokeapi.co/api/v2"
 const getState = ({ getStore, getActions, setStore }) => {
 	const store = {
 		demo: [
@@ -69,7 +70,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		getAllPokemons: async ()=>{
 			const store = getStore()
 			const actions = getActions()
-			const response = await actions.useFetch(process.env.APP_API_URL,"/pokemon","GET",false)
+			const response = await actions.useFetch(API_URL,"/pokemon","GET",false)
 			console.log(response) 
 		}
     }
