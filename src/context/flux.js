@@ -11,8 +11,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				background: "",
 			}
 		],
-		pokemons : null, 
-    }
+		pokemons: null,
+	}
 
 	const actions = {
 		// Use getActions to call a function within a fuction
@@ -39,10 +39,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			setStore({ demo: demo });
 		},
 		useFetch: async (url, endpoint, method, useToken, body, format) => {
-			if (format == "json"){
+			if (format == "json") {
 				body = JSON.stringify(body)
-				format = {"Content-Type": "application/json"}
-			}else if(format == "formData"){
+				format = { "Content-Type": "application/json" }
+			} else if (format == "formData") {
 				const formData = new FormData()
 				for (const key in body) formData.append(key, body[key])
 				body = formData
@@ -52,31 +52,43 @@ const getState = ({ getStore, getActions, setStore }) => {
 				method: method,
 				headers: {
 					...(method != "GET" && format),
-					...(useToken && {"Authorization": "Bearer "+sessionStorage.getItem("authToken")}),
+					...(useToken && { "Authorization": "Bearer " + sessionStorage.getItem("authToken") }),
 					redirect: 'follow'
 				},
-				...(method != "GET" && {body: body}),
+				...(method != "GET" && { body: body }),
 			}
 			try {
-				const promise = await fetch(url+endpoint, requestOptions)
+				const promise = await fetch(url + endpoint, requestOptions)
 				const res = await promise.json()
 				console.log(promise)
 				console.log(res)
-				return {data: res, status: promise.status};
+				return { data: res, status: promise.status };
 			} catch (error) {
-				return {error: true}
+				return { error: true }
 			}
 		},
-		getAllPokemons: async ()=>{
+		getAllPokemons: async () => {
 			const store = getStore()
 			const actions = getActions()
-			const response = await actions.useFetch(API_URL,"/pokemon","GET",false)
-			console.log(response) 
+			const response = await actions.useFetch(API_URL, "/pokemon", "GET", false)
+			console.log(response)
+
+			if (!response.error) {
+				if (response.status == 200) {
+					setStore({ pokemons: response.data.results });
+				}
+
+			} else(
+				setStore({ pokemons: false })
+			)
+			
 		}
-    }
+	}
+
+
 
 	// Returns context
-    return {store, actions}
+	return { store, actions }
 };
 
 export default getState;

@@ -9,6 +9,8 @@ import {
 } from "@/components/bootstrap/client-bootstrap";
 import Link from "next/link";
 
+
+
 export const Card = (props) => {
     return (
         <BSCard style={{ width: '18rem' }}>
