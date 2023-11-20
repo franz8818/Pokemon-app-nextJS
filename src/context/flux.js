@@ -67,28 +67,47 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return { error: true }
 			}
 		},
-		getAllPokemons: async () => {
-			const store = getStore()
-			const actions = getActions()
-			const response = await actions.useFetch(API_URL, "/pokemon", "GET", false)
-			console.log(response)
 
-			if (!response.error) {
-				if (response.status == 200) {
-					setStore({ pokemons: response.data.results });
-				}
+		 getAllPokemons: async () => {
+    const store = getStore();
+    const actions = getActions();
 
-			} else(
-				setStore({ pokemons: false })
-			)
-			
-		}
-	}
+    try {
+      const response = await actions.useFetch(API_URL, "/pokemon", "GET", false);
 
+      if (!response.error) {
+        if (response.status === 200) {
+          // Para cada Pokémon en la respuesta, obten información adicional
+          const pokemonDetails = await Promise.all(response.data.results.map(async (pokemon) => {
+            const detailsResponse = await actions.useFetch(pokemon.url, "", "GET", false);
+            if (!detailsResponse.error && detailsResponse.status === 200) {
+              return {
+                name: pokemon.name,
+                ID: detailsResponse.data.id,
+                weight: detailsResponse.data.weight,
+                height: detailsResponse.data.height,
+                ability: detailsResponse.data.abilities[0]?.ability.name || "N/A",
+              };
+            }
+            return null;
+          }));
 
+          // Filtra aquellos que obtuvieron detalles exitosos
+          const filteredDetails = pokemonDetails.filter((detail) => detail !== null);
 
+          setStore({ pokemons: filteredDetails });
+        }
+      } else {
+        setStore({ pokemons: false });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+
+	
 	// Returns context
 	return { store, actions }
 };
+
 
 export default getState;
