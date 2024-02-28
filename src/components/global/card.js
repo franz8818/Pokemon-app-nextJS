@@ -30,9 +30,9 @@ export const Card = (props) => {
     }, [props.url])
     console.log(pokemon)
     return (
-        <BSCard style={{ width: '18rem' }}>
-            <Image src="/img/squirtle.png" alt="Squirtle" width={300}
-                height={300}
+        <BSCard style={{ width: '12rem' }}>
+            <Image src="/img/squirtle.png" alt="Squirtle" width={200}
+                height={200}
                 priority />
             <CardBody>
                 <CardTitle>{props.name}</CardTitle>
@@ -43,5 +43,8 @@ export const Card = (props) => {
                 <Button variant="primary">Go somewhere</Button>
             </CardBody>
         </BSCard>
+      <div className="info">
+        
+    </div>
     );
 };
