@@ -30,21 +30,28 @@ export const Card = (props) => {
     }, [props.url])
     console.log(pokemon)
     return (
-        <BSCard style={{ width: '12rem' }}>
-            <Image src="/img/squirtle.png" alt="Squirtle" width={200}
-                height={200}
+        <div class="grid-layout">
+        <BSCard style={{ width: '50rem' }}>
+        <div className="card-content">
+            <Image src="/img/squirtle.png" alt="Squirtle" width={250}
+                height={250}
                 priority />
             <CardBody>
-                <CardTitle>{props.name}</CardTitle>
-                <CardSubtitle>{props.ID}</CardSubtitle>
+                <CardTitle><h1>{props.name}</h1></CardTitle>
+                <div className="info">
+        <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        </p>
+         </div>
+                <CardSubtitle>{props.ID}</CardSubtitle> {/* NO SE MUESTRA EN EL FRONT*/}
                 <CardText><strong>Weight</strong> {props.weight}</CardText>
                 <CardText><strong>Height</strong> {props.height} </CardText>
                 <CardText><strong>Ability</strong> {props.ability} </CardText>
-                <Button variant="primary">Go somewhere</Button>
+         <Button variant="primary">Go somewhere</Button>
             </CardBody>
-        </BSCard>
-      <div className="info">
-        
+      
+    </div>
+    </BSCard>
     </div>
     );
 };

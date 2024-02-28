@@ -1,18 +1,35 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css");
 
-
 /* ------------------------- NAVBAR.JS -----------------------------*/
 .logo-navbar {
   height: 100px;
   
 }
-
-
 /* ------------------------- PAGE.JS -----------------------------*/
-/* .container {
-    background: #09f;
-} */
 
-.card {
-  border-style: solid;
+.grid-layout {
+  display: grid;
+  grid-template-areas: "card info";
+  grid-template-rows: 1fr; /* define que porcentaje ocupa cada elemento*/
+  padding: 50px;
 }
+
+.card{
+  grid-area: card; /* Asigna este card al área 'card' */
+  display: grid;
+  grid-template-columns: auto 1fr; /* Agrega dos columnas a .card-content */
+  padding: 10px;
+}
+
+.card-content {
+  display: grid;
+  grid-template-columns: 1fr auto; /* Define dos columnas en .card-content */
+}
+
+.info{
+  grid-area: info; /* Asigna este info al área 'info' */
+  display: flex; /* Usa flexbox para que el contenido se distribuya en fila */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+}
+
