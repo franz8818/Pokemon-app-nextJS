@@ -33,7 +33,7 @@ export const Card = (props) => {
         <div class="grid-layout">
         <BSCard style={{ width: '50rem' }}>
         <div className="card-content">
-            <Image src="/img/squirtle.png" alt="Squirtle" width={250}
+            <Image  src="/img/squirtle.png" alt="Squirtle" width={250}
                 height={250}
                 priority />
             <CardBody>
@@ -49,7 +49,6 @@ export const Card = (props) => {
                 <CardText><strong>Ability</strong> {props.ability} </CardText>
          <Button variant="primary">Go somewhere</Button>
             </CardBody>
-      
     </div>
     </BSCard>
     </div>
