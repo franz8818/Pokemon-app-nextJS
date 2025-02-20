@@ -3,7 +3,11 @@
 /* ------------------------- NAVBAR.JS -----------------------------*/
 .logo-navbar {
   height: 100px;
-  
+  padding-left: 2rem;
+}
+
+.ms-auto{
+  padding-right: 2rem;
 }
 /* ------------------------- PAGE.JS -----------------------------*/
 
@@ -32,5 +36,3 @@
   justify-content: center; /* Centra el contenido horizontalmente */
   align-items: center; /* Centra el contenido verticalmente */
 }
-
-x
